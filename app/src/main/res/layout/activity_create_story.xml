@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:padding="16dp">
+
+<!-- ImageView to show the selected image -->
+<ImageView
+    android:id="@+id/ivSelectedImage"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="16dp"
+    android:src="@drawable/placeholder_image"
+    android:scaleType="centerCrop" />
+
+<!-- Button to select image from the gallery -->
+<Button
+    android:id="@+id/btnSelectFromGallery"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/gallery"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="8dp" />
+
+<!-- Button to take a picture from the camera -->
+<Button
+    android:id="@+id/btnTakePicture"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/camera"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="16dp" />
+
+<!-- EditText for user to input description -->
+<EditText
+    android:id="@+id/ed_add_description"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/description"
+    android:maxLines="3"
+    android:layout_marginBottom="16dp" />
+
+<!-- Button to save the story -->
+<Button
+    android:id="@+id/button_add"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/save_story"
+    android:layout_gravity="center_horizontal" />
+
+</LinearLayout>
+

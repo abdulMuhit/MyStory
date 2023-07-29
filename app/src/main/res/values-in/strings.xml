@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kisah Dicoding Saya</string>
+    <string name="title_activity_detail_story">Detail Kisah</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="next">Berikutnya</string>
+    <string name="previous">Sebelumnya</string>
+    <string name="errorMessageEmail">
+        Email tidak valid
+    </string>
+    <string name="errorMessageName">
+        Nama harus diisi
+    </string>
+    <string name="errorMessageRegister">
+        Email, nama, atau password tidak valid
+    </string>
+    <string name="errorMessageLogin">
+        Email atau password tidak cocok
+    </string>
+    <string name="errorMessagePassword">
+        Password harus lebih dari 8 karakter
+    </string>
+    <string name="title_activity_create_story">Buat Kisah</string>
+    <string name="logout">Keluar</string>
+    <string name="create_new_story">Buat Kisah Baru</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="name">Nama</string>
+    <string name="login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="register_question">Belum memiliki akun?</string>
+    <string name="loading">Memuat</string>
+    <string name="gallery">Galeri</string>
+    <string name="camera">Kamera</string>
+    <string name="description">Deskripsi</string>
+    <string name="save_story">Simpan</string>
+    <string name="errorMessagePermission">Izin Bermasalah</string>
+    <string name="errorMessageFile">Harap tambahkan gambar terlebih dahulu</string>
+    <string name="youchoose">Anda memilih</string>
+</resources>

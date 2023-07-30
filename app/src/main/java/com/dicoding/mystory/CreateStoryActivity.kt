@@ -22,6 +22,7 @@ import androidx.core.content.FileProvider
 import androidx.core.net.toUri
 import com.dicoding.mystory.Utils.createCustomTempFile
 import com.dicoding.mystory.Utils.reduceFileImage
+import com.dicoding.mystory.Utils.uriToFile
 import com.dicoding.mystory.databinding.ActivityCreateStoryBinding
 import com.dicoding.mystory.network.ApiConfig
 import com.dicoding.mystory.network.FileUploadResponse
@@ -86,7 +87,7 @@ class CreateStoryActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnSelectFromGallery.setOnClickListener {
-            openGallery()
+            startGallery()
         }
 
         binding.btnTakePicture.setOnClickListener {
@@ -109,9 +110,26 @@ class CreateStoryActivity : AppCompatActivity() {
         }
     }
 
-    private fun openGallery() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, REQUEST_PICK_IMAGE)
+    private fun startGallery() {
+        val intent = Intent()
+        intent.action = Intent.ACTION_GET_CONTENT
+        intent.type = "image/*"
+        val chooser = Intent.createChooser(intent, "Choose a Picture")
+        launcherIntentGallery.launch(chooser)
+    }
+
+    private val launcherIntentGallery = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val selectedImg = result.data?.data as Uri
+
+            selectedImg.let { uri ->
+                val myFile = uriToFile(uri, this@CreateStoryActivity)
+                getFile = myFile
+                binding.ivSelectedImage.setImageURI(uri)
+            }
+        }
     }
 
     private val launcherIntentCamera = registerForActivityResult(
@@ -162,6 +180,7 @@ class CreateStoryActivity : AppCompatActivity() {
                     data?.data?.let { uri ->
                         selectedImageUri = uri
                         binding.ivSelectedImage.setImageURI(uri)
+                        getFile = File(getRealPathFromURI(uri))
                     }
                 }
             }
@@ -231,6 +250,15 @@ class CreateStoryActivity : AppCompatActivity() {
             val errorMessage = resources.getString(R.string.errorMessageFile)
             Toast.makeText(this@CreateStoryActivity, errorMessage, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun getRealPathFromURI(uri: Uri): String {
+        val cursor = contentResolver.query(uri, null, null, null, null)
+        cursor?.moveToFirst()
+        val idx = cursor?.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
+        val result = cursor?.getString(idx ?: 0)
+        cursor?.close()
+        return result ?: ""
     }
 
 }

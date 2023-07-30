@@ -37,6 +37,7 @@
             android:padding="16dp">
 
             <ImageView
+                android:transitionName="profile"
                 android:id="@+id/iv_detail_photo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -45,6 +46,7 @@
                 android:src="@drawable/placeholder_image" />
 
             <TextView
+                android:transitionName="name"
                 android:id="@+id/tv_detail_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,6 +56,7 @@
                 android:layout_below="@id/iv_detail_photo"/>
 
             <TextView
+                android:transitionName="description"
                 android:id="@+id/tv_detail_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -10,8 +10,6 @@ import android.content.SharedPreferences
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
@@ -88,27 +86,6 @@ class MainActivity : AppCompatActivity() {
         storyAdapter = StoryAdapter(storyList)
         recyclerView.adapter = storyAdapter
         storyAdapter.notifyDataSetChanged()
-        storyAdapter.setOnItemClickCallback(object : StoryAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Story) {
-                showSelectedStory(data)
-            }
-        })
-
-    }
-
-    private fun showSelectedStory(story: Story) {
-        // Membuat Intent untuk beralih ke DetailActivity
-        val intent = Intent(this@MainActivity, DetailStoryActivity::class.java)
-        intent.putExtra("STORY_ID", story.id)
-        startActivityWithAnimation(intent, story)
-    }
-
-    // Helper function to start activity with animation
-    private fun startActivityWithAnimation(intent: Intent, story: Story) {
-        val message = resources.getString(R.string.youchoose)
-        Toast.makeText(this, message + story.name, Toast.LENGTH_SHORT).show()
-        overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
-        startActivity(intent)
     }
 
     private val resultLauncher = registerForActivityResult(

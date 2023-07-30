@@ -1,5 +1,6 @@
 package com.dicoding.mystory.models
 
+
 data class Story(
     val id: String,
     val name: String,
